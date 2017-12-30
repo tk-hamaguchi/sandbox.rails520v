@@ -27,3 +27,10 @@
 /public/packs
 /public/packs-test
 /node_modules
+
+# Added original ignore
+vendor/bundle/*
+*.swp
+config/database.yml
+coverage
+.sass-cache/
