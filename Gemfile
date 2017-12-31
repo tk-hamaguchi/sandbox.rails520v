@@ -44,6 +44,7 @@ group :development, :test do
 
   gem 'rspec-rails', '>= 3.7.0'
   gem 'rspec_junit_formatter'
+  gem 'rails-controller-testing'
 
   gem 'chromedriver-helper'
   gem 'capybara'
@@ -63,3 +64,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'figaro'
+gem 'haml-rails'
