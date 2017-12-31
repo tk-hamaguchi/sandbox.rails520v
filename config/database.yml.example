@@ -14,12 +14,13 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password:
-  host: localhost
+  password: mysql123
+  host: 127.0.0.1
+  port: 3306
 
 development:
   <<: *default
-  database: rails520v_development
+  database: rails520v
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

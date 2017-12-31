@@ -34,3 +34,6 @@ vendor/bundle/*
 config/database.yml
 coverage
 .sass-cache/
+
+# Ignore application configuration
+/config/application.yml
