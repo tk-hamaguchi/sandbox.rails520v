@@ -1,0 +1,75 @@
+version: '3.3'
+
+services:
+  app:
+    build: .
+    ports:
+      - 9292:9292
+    depends_on:
+      - redis
+      - elasticsearch
+      - db
+    environment:
+      RAILS_MASTER_KEY: a4bedfac3c1be17b84d644f0817705a1
+      DATABASE_URL: mysql2://root:mysql123@db/rails520v?reconnect=true&prepared_statements=true&encoding=utf8
+      RAILS_LOG_TO_STDOUT: 'true'
+      RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: 'true'
+      RAILS_MAX_THREADS: 1
+      ELASTICSEARCH_URL: http://elastic:changeme@elasticsearch:9200
+      REDIS_URL: redis://redis:6379/1
+      #TZ: JST-9
+      #SENTRY_DSN: http://localhost/rails520v
+      #WORKER: 1
+      #THREAD: 4:8
+      #PORT: 9292
+    tmpfs:
+      - /var/rails/tmp
+
+  db:
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123
+      MYSQL_DATABASE: rails520v
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "127.0.0.1", "--password=mysql123"]
+      timeout: 20s
+      retries: 10
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      timeout: 20s
+      retries: 10
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.1.1
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch
