@@ -1,2 +1,11 @@
 %h1 Home#index
 %p Find me in app/views/home/index.html.erb
+%hr
+- if notice
+  .alert.alert-info#information_area
+    = notice
+- elsif alert
+  .alert.alert-danger#warning_area{role:'alert'}
+    = alert
+
+= render partial: 'devise/shared/links'
