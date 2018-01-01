@@ -2,6 +2,18 @@ ja:
   activerecord:
     models:
       tenant: テナント
+      user:   ユーザ
     attributes:
-      name: テナント名
-      status: 状態
+      tenant:
+        name: テナント名
+        status: 状態
+        created_at: 作成日時
+        updated_at: 最終更新日時
+      user:
+        name: ユーザ名
+        password: パスワード
+        email: メールアドレス
+        tenant_id: テナントID
+        tenant: テナント
+        created_at: 作成日時
+        updated_at: 最終更新日時

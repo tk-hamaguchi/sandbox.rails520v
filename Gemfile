@@ -78,3 +78,6 @@ gem 'figaro'
 gem 'haml-rails'
 
 gem 'rails-i18n'
+
+gem 'devise'
+gem 'devise-i18n'
