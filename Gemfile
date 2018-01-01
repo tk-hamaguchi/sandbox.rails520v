@@ -55,6 +55,11 @@ group :development, :test do
 
   gem 'rubocop', require: false
   gem 'rubocop-checkstyle_formatter', require: false
+
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'faker-japanese'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -71,3 +76,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'figaro'
 gem 'haml-rails'
+
+gem 'rails-i18n'

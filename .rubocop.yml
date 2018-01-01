@@ -37,3 +37,4 @@ Style/FrozenStringLiteralComment:
     - 'app/**/*'
     - 'config/**/*'
     - 'config.ru'
+    - 'db/**/*'

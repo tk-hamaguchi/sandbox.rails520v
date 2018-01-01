@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      tenant: テナント
+    attributes:
+      name: テナント名
+      status: 状態
