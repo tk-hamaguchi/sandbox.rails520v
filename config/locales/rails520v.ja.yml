@@ -9,6 +9,7 @@ ja:
         status: 状態
         created_at: 作成日時
         updated_at: 最終更新日時
+        lock_version: バージョン
       user:
         name: ユーザ名
         password: パスワード
@@ -17,3 +18,4 @@ ja:
         tenant: テナント
         created_at: 作成日時
         updated_at: 最終更新日時
+        lock_version: バージョン

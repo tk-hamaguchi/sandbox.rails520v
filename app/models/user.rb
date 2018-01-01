@@ -8,12 +8,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :name,
-    length: { in: 1..40 },
-    presence:   true
+            length: { in: 1..40 },
+            presence: true
 
   validates :email,
-    uniqueness: { case_sensitive: false },
-    length: { maximum: 100 },
-    presence:   true
-
+            uniqueness: { case_sensitive: false },
+            length: { maximum: 100 },
+            presence: true
 end
