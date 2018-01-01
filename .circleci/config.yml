@@ -3,36 +3,22 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
+
 jobs:
   build:
     docker:
       # specify the version you desire here
       - image: circleci/ruby:2.5.0-node-browsers
-        environment:
-          DATABASE_URL: mysql2://root:@127.0.0.1:3306/circle_test
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
-      - image: circleci/mysql:5.7-ram
-        environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_DATABASE: circle_test
 
     working_directory: ~/repo
 
     steps:
       - checkout
-
-      - run:
-          name: Install System Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y libappindicator1 fonts-liberation
-            export CHROME_BIN=/usr/bin/google-chrome
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome*.deb
 
       # Download and cache dependencies
       - restore_cache:
@@ -51,11 +37,43 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+  rspec:
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          DATABASE_URL: mysql2://root:@127.0.0.1:3306/circle_test
 
-      # Database setup
+      - image: circleci/mysql:5.7-ram
+        environment:
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_DATABASE: circle_test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --deployment
+
+      - run:
+          name: Install System Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libappindicator1 fonts-liberation
+            export CHROME_BIN=/usr/bin/google-chrome
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo dpkg -i google-chrome*.deb
+
       - run: RAILS_ENV=test bundle exec rake db:create db:schema:load
 
-      # run tests!
       - run:
           name: run tests
           command: |
@@ -77,6 +95,9 @@ jobs:
 
 workflows:
   version: 2
-  build_and_deploy:
+  build_and_test:
     jobs:
       - build
+      - rspec:
+          requires:
+            - build
