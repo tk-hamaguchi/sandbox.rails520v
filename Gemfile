@@ -52,6 +52,9 @@ group :development, :test do
 
   gem 'simplecov', require: false
   gem 'codecov', require: false
+
+  gem 'rubocop', require: false
+  gem 'rubocop-checkstyle_formatter', require: false
 end
 
 group :development do

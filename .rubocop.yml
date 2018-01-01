@@ -1,0 +1,39 @@
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    # for Devise
+    - 'config/initializers/devise.rb'
+    - 'db/migrate/*_devise_create_users.rb'
+    # for SimpleForm
+    - 'config/initializers/simple_form.rb'
+    # for Puma
+    - 'config/puma.rb'
+    # for Cucumber
+    - 'script/cucumber'
+    - 'features/**/*'
+    - 'lib/tasks/cucumber.rake'
+    # for RSpec
+    - 'spec/**/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'bin/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'app/**/*'
+    - 'config/**/*'
+    - 'config.ru'

@@ -37,6 +37,31 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+  check:
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: bundle install --jobs=4 --retry=3 --deployment
+
+      - run: bundle exec rubocop -D -R -fp -fh -o /tmp/test-results/rubocop.html
+
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+
   rspec:
     docker:
       - image: circleci/ruby:2.5.0-node-browsers
@@ -98,6 +123,9 @@ workflows:
   build_and_test:
     jobs:
       - build
+      - check:
+          requires:
+            - build
       - rspec:
           requires:
             - build
