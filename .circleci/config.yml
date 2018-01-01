@@ -41,8 +41,6 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: env
-
       - run:
           name: install dependencies
           command: |
@@ -53,9 +51,9 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+
       # Database setup
-      - run: RAILS_ENV=test bundle exec rake db:create
-      - run: RAILS_ENV=test bundle exec rake db:schema:load
+      - run: RAILS_ENV=test bundle exec rake db:create db:schema:load
 
       # run tests!
       - run:
@@ -67,6 +65,7 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             spec/
+
 
       - store_artifacts:
           path: /tmp/test-results

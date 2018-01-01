@@ -1,3 +1,13 @@
+require 'simplecov'
+
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  require 'codecov'
+  SimpleCov.coverage_dir File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+  SimpleCov.start 'rails'
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

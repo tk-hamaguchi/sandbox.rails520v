@@ -49,6 +49,9 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem 'capybara'
   gem 'selenium-webdriver'
+
+  gem 'simplecov', require: false
+  gem 'codecov', require: false
 end
 
 group :development do
