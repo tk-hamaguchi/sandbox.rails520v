@@ -8,7 +8,7 @@
     "vue-loader": "^13.6.1",
     "vue-template-compiler": "^2.5.13",
     "less": "^2.7.3",
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.0.0-beta.3",
     "bootstrap-datepicker": "^1.7.1",
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "^0.0.5-beta.2",
