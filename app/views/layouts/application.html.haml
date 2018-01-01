@@ -6,5 +6,9 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = yield :javascript_links
+    = stylesheet_pack_tag 'application'
+    = yield :stylesheet_links
   %body
     = yield
