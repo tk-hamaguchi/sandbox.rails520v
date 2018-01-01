@@ -98,6 +98,9 @@ jobs:
             sudo dpkg -i google-chrome*.deb
 
       - run: RAILS_ENV=test bundle exec rake db:create db:schema:load
+      - run: yarn install --frozen-lockfile
+      - run: bundle exec rake assets:precompile
+      - run: bundle exec webpack
 
       - run:
           name: run tests
