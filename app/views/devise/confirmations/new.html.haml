@@ -1,0 +1,21 @@
+#confirmation_form.col-md-8.offset-md-2
+  .card
+    .card-header
+      %h2.card-title
+        = t '.resend_confirmation_instructions'
+    .card-body
+      = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, id: 'new_user_confirmation' }) do |f|
+        = f.error_notification
+        = f.full_error :confirmation_token
+        .form-inputs
+          = f.input :email, required: true, autofocus: true
+        .form-actions
+          = f.button :button, class: 'btn btn-primary btn-block btn-lg', id: 'new_user_confirmation_submit' do
+            %i.fa.fa-pencil{ aria: { hidden: :true } }
+            = t '.resend_confirmation_instructions'
+
+  .mt-3.text-right
+    = link_to new_session_path(resource_name), class: 'text-secondary' do
+      %i.fa.fa-sign-in{ aria: { hidden: :true } }
+      = t('devise.shared.links.sign_in')
+

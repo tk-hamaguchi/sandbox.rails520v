@@ -1,0 +1,23 @@
+%header
+  %nav.navbar.navbar-expand.navbar-light.bg-light
+    = link_to root_path, class: 'navbar-brand' do
+      = t 'app_name'
+    - if user_signed_in?
+      %ul.navbar-nav.ml-auto
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-item.nav-link.dropdown-toggle{ href: '#', role: 'button', data: { toggle: 'dropdown' }, aria: { haspopup: :true, expanded: :false }}
+            %i.fa.fa-user.fa-lg
+            %span.d-none.d-sm-inline
+              = current_user.name
+          .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navbarDropdown' }}
+            = link_to '#', class: 'dropdown-item' do
+              hoge
+            .dropdown-divider
+            = link_to destroy_user_session_path, {id: 'logoutBtn', class:'dropdown-item', method: :delete} do
+              %i.fa.fa-power-off
+                = t('sign_out')
+    - else
+      = link_to new_user_session_path, class: 'btn btn-outline-secondary btn-sm ml-auto' do
+        %i.fa.fa-sign-in.fa-lg{ aria: { hidden: :true } }
+        %span.d-none.d-sm-inline
+          = t 'sign_in'

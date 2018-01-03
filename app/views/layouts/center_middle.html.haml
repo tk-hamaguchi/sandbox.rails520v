@@ -1,0 +1,13 @@
+- header ||= false
+- content_for :stylesheet_links do
+  = stylesheet_pack_tag 'center_middle_layout'
+
+- content_for :application_content do
+  .center-middle-layout
+    .center-middle-layout-wrapper
+      .container
+        = content_for?(:application_content) ? yield(:application_content) : yield
+      .center-middle-layout-footer
+        = render partial: '/layouts/footer'
+
+= render template: 'layouts/application', locals: { header: header }

@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  min-width: 320px;
+
+  & > .container-fluid {
+    padding: 0px;
+    & > .row {
+      margin:       0px;
+      min-height: 100vh;
+      padding: 55px 0px 0px;
+    }
+  }
+}
+
+#header {
+}
+
+#footer {
+  width: 100%;
+  margin: 0.4rem;
+  text-align: center;
+  font: {
+    size: 0.6rem;
+  }
+  color: gray
+}
+
+.copylight {
+  margin: 0px;
+}
+
+.version_no {
+  float: right;
+  margin: 0px;
+}
+
+.alert {
+  ul {
+    margin-bottom: 0px;
+  }
+}
+
+header {
+  border-bottom: #600 solid 1px;
+}
+

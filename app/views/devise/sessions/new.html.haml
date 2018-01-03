@@ -1,0 +1,45 @@
+- content_for :stylesheet_links do
+  :scss
+    form#new_user_session {
+      .container {
+        input {
+          border: none;
+          border-radius: 0px;
+          border-bottom: 1px solid darkgray;
+        }
+        button {
+          border-radius: 0px;
+        }
+        padding-top: 1em;
+      }
+      .form-check {
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+    .alert {
+      margin: {
+        bottom: 0px;
+      }
+    }
+
+
+#login_form.col-md-8.offset-md-2
+  .col-md-12
+    %h1= t 'app_name'
+    = render partial: '/layouts/alerts'
+
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'new_user_session' }) do |f|
+    .container
+      = f.input :email,    required: false, label: false, placeholder: resource_class.human_attribute_name(:email)
+      = f.input :password, required: false, label: false, placeholder: resource_class.human_attribute_name(:password)
+      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      = f.button :button, class: 'btn btn-block btn-primary btn-lg', id: 'new_user_session_submit' do
+        %i.fa.fa-sign-in{ aria:{ hidden: true }}
+        = t('devise.sessions.new.sign_in')
+
+  .mt-3.text-right
+    = link_to new_password_path(resource_name), class: 'text-secondary' do
+      %i.fa.fa-question-circle{ aria: { hidden: :true } }
+      = t 'devise.shared.links.forgot_your_password'
+

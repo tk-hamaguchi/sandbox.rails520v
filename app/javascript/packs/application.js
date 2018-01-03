@@ -10,4 +10,4 @@
 import 'src/application'
 import 'bootstrap/dist/js/bootstrap'
 import 'font-awesome-webpack'
-//import 'src/base'
+import 'src/base'

@@ -13,5 +13,10 @@
     = yield :javascript_links
     = stylesheet_pack_tag 'application'
     = yield :stylesheet_links
+
   %body
-    = yield
+    - unless defined?(header) && header == false
+      = render partial: '/layouts/header'
+
+    = content_for?(:application_content) ? yield(:application_content) : yield
+

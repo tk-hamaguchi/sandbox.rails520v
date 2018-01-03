@@ -1,0 +1,11 @@
+- content_for :stylesheet_links do
+  :scss
+    .card {
+      .card-title {
+        margin: {
+          bottom: 0px;
+        }
+      }
+    }
+
+= render template: 'layouts/center_middle', locals:{ header: false }

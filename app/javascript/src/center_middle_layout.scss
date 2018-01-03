@@ -1,0 +1,33 @@
+html, body { height: 100%; }
+
+.center-middle-layout {
+  height: 100%;
+  display: table;
+  min-height: 100%;
+  width: 100%;
+  .center-middle-layout-wrapper {
+    vertical-align: middle;
+    display: table-cell;
+    .container {
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .center-middle-layout-footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 0px 1rem;
+    #footer {
+      width: 100%;
+    }
+  }
+}
+
+#header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}

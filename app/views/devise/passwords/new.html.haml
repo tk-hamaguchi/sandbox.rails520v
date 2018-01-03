@@ -1,0 +1,20 @@
+#password_form.col-md-8.offset-md-2
+  .card
+    .card-header
+      %h2.card-title
+        = t 'devise.shared.links.forgot_your_password'
+    .card-body
+      = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, id: 'new_user_password' }) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, required: false, label: false, placeholder: resource_class.human_attribute_name(:email)
+        .form-actions
+          = f.button :button, class: 'btn btn-primary btn-block btn-lg', id: 'new_user_password_submit' do
+            %i.fa.fa-envelope{ aria: { hidden: :true } }
+            = t('devise.passwords.new.send_me_reset_password_instructions')
+
+  .mt-3.text-right
+    = link_to new_session_path(resource_name), class: 'text-secondary' do
+      %i.fa.fa-sign-in{ aria: { hidden: :true } }
+      = t('devise.shared.links.sign_in')
+
