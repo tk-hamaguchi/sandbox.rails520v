@@ -10,7 +10,7 @@ RSpec.feature 'ログイン機能', type: :system do
       visit root_path
 
       # ログインリンクをクリック
-      find(:css, "a[href=\"#{new_user_session_path}\"]").click
+      find(:css, "nav a[href=\"#{new_user_session_path}\"]").click
 
       # ログインフォームに入力
       within(:css, "form[action=\"#{user_session_path}\"][method=\"post\"]") do

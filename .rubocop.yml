@@ -38,3 +38,7 @@ Style/FrozenStringLiteralComment:
     - 'config/**/*'
     - 'config.ru'
     - 'db/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'
