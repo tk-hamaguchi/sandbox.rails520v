@@ -1,0 +1,5 @@
+- class_list = %w[nav-link]
+- class_list << 'active' if request.path == my_path
+= link_to my_path, class: class_list do
+  %i.fa.fa-home
+  = t '.home'

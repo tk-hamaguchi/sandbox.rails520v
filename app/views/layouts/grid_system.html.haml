@@ -1,0 +1,35 @@
+- content_for :stylesheet_links do
+  = stylesheet_pack_tag 'grid_system_layout.css'
+
+- content_for :javascript_links do
+  = javascript_pack_tag 'grid_system_layout.js'
+
+- content_for :application_content do
+  .container-fluid
+    .row
+      - if defined?(side_menu) && side_menu == false
+        .col-sm-12
+          %main#main_contents
+            = content_for?(:grid_system_content) ? yield(:grid_system_content) : yield
+
+          %footer.clearfix
+            .container-fluid
+              .row
+                .col-sm-12
+                  = render partial: '/layouts/footer'
+      - else
+        .col-sm-9
+          %main#main_contents
+            = content_for?(:grid_system_content) ? yield(:grid_system_content) : yield
+
+          %footer.clearfix
+            .container-fluid
+              .row
+                .col-sm-12
+                  = render partial: '/layouts/footer'
+
+        %nav#side_menu.col-sm-3.order-first
+          = render partial: '/layouts/side_menu_items'
+
+= render template: 'layouts/application'
+

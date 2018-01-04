@@ -65,7 +65,7 @@ RSpec.feature 'パスワード再発行機能', type: :system do
       end
 
       # パスワードが変更され、トップページに戻る
-      expect(page.current_path).to eq '/'
+      expect(page.current_path).to eq '/my'
       expect(page).to have_css '#information_area', text: 'パスワードが正しく変更されました。'
 
       # 一旦ログアウト
@@ -85,8 +85,7 @@ RSpec.feature 'パスワード再発行機能', type: :system do
         click_button 'ログイン'
       end
 
-      expect(page.current_path).to eq '/'
-      expect(page).to have_css :h1, text: 'Home#index'
+      expect(page.current_path).to eq '/my'
       expect(page).to have_css :div, text: 'ログインしました。'
 
     end

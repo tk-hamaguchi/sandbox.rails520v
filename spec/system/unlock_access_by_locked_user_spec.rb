@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature 'ユーザ登録時のメール確認機能', type: :system do
+RSpec.feature 'アカウントロック解除機能', type: :system do
   let(:tenant) { FactoryBot.create :tenant }
   let(:user)   { FactoryBot.create :confirmed_user, tenant_id: tenant.id }
   let(:from)   { 'please-change-me-at-config-initializers-devise@example.com' }
 
-  context 'ユーザが作成されたとき' do
-    scenario 'アカウント確認メールを通してサインアップすることができる', js: :true do
+  context 'ユーザはアカウントがロックされたとき' do
+    scenario 'アカウント凍結解除メールを通してアンロックすることができる', js: :true do
 
       # まずユーザをロックする
       user.lock_access!
@@ -44,8 +44,7 @@ RSpec.feature 'ユーザ登録時のメール確認機能', type: :system do
         click_button 'ログイン'
       end
 
-      expect(page.current_path).to eq '/'
-      expect(page).to have_css :h1, text: 'Home#index'
+      expect(page.current_path).to eq '/my'
       expect(page).to have_css '#information_area', text: 'ログインしました。'
 
     end

@@ -1,0 +1,86 @@
+body > .container-fluid {
+  > .row {
+    padding-top: 0px;
+    min-height: auto;
+
+    > .col-sm-9 {
+      border-left: maroon solid 1px;
+      box-shadow: 10px 10px 15px 15px rgba(0,0,0,0.4) inside;
+      padding-top: 10px;
+    }
+
+  }
+}
+
+header {
+  .navbar-brand {
+    font-weight: bold;
+  }
+  .dropdown-menu {
+    box-shadow: 1px 1px 0px 0px rgba(50%,50%,50%,0.4);
+    a:hover {
+      background-color: #ddd;
+    }
+    .dropdown-divider {
+      border-top-color: #999;
+    }
+  }
+}
+
+nav#side_menu {
+  background-color: #fec;
+  padding: 0px;
+  padding-top: 1em;
+  a.nav-link {
+    padding-right: 0px;
+
+    &.active {
+      background-color: orange;
+      color: maroon;
+      &:after{
+        content: "";
+        border: 0.7em solid transparent;
+        border-left-color: white;
+        display: inline-block;
+        vertical-align: bottom;
+        float:right;
+      }
+    }
+    &.project-link {
+      border-bottom: solid 1px #c93;
+    }
+  }
+  #project_list {
+    .projects_label {
+      background-color: #600;
+      margin-top: 1em;
+      font-size: 0.8em;
+      color: white;
+      line-height: 2em;
+      padding-left: 1em;
+      display: inline-block;
+      &:after{
+        content: "";
+        border: 1.1em solid transparent;
+        border-top-color: #fec;
+        border-right-color: #fec;
+        display: inline-block;
+        vertical-align: bottom;
+      }
+    }
+    .projects_name {
+      border-top: solid 1px #600;
+      border-left: 5px solid #600;
+      border-bottom: solid 1px #600;
+
+    }
+  }
+}
+
+.btn.btn-secondary {
+  border-color: #f93;
+  color: #666;
+}
+.card {
+  box-shadow: 0px 0px 1px 1px rgba(50%,50%,50%,0.4);
+}

@@ -45,3 +45,8 @@ ja:
     error_notification:
       default_message: '以下の問題を確認してください:'
 
+  layouts:
+    side_menu_items:
+      home: ホーム
+
+

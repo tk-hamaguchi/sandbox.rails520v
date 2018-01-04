@@ -44,8 +44,7 @@ RSpec.feature 'ユーザ登録時のメール確認機能', type: :system do
         click_button 'ログイン'
       end
 
-      expect(page.current_path).to eq '/'
-      expect(page).to have_css :h1, text: 'Home#index'
+      expect(page.current_path).to eq '/my'
       expect(page).to have_css '#information_area', text: 'ログインしました。'
 
     end

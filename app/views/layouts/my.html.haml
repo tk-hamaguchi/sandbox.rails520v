@@ -1,0 +1,12 @@
+- content_for :stylesheet_links do
+  = stylesheet_pack_tag 'my.css'
+
+- content_for :javascript_links do
+  = javascript_pack_tag 'my.js'
+
+- content_for :grid_system_content do
+  = render partial: '/layouts/alerts'
+  = content_for?(:my_content) ? yield(:my_content) : yield
+
+= render template: 'layouts/grid_system', locals: { side_menu: false }
+
