@@ -6,15 +6,14 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
+import $ from 'jquery'
 import App from '../app.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
+$(document).on('turbolinks:load DOMContentLoaded', () => {
+  $('#my_contents').html(document.createElement('hello'))
   const app = new Vue({
     render: h => h(App)
   }).$mount('hello')
-
-  console.log(app)
 })
 
 

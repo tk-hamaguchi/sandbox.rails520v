@@ -85,3 +85,6 @@ gem 'devise'
 gem 'devise-i18n'
 
 gem 'simple_form'
+
+gem 'rails_admin'
+gem 'rails_admin-i18n'

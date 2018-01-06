@@ -19,9 +19,12 @@ AllCops:
     - 'lib/tasks/cucumber.rake'
     # for RSpec
     - 'spec/**/*'
+    # others
     - 'config/environments/*'
     - 'config/application.rb'
     - 'bin/*'
+    - 'config/initializers/**/*'
+    - 'db/migrate/**/*'
 
 Metrics/LineLength:
   Max: 120

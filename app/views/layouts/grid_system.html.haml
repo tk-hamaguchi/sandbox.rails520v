@@ -2,7 +2,7 @@
   = stylesheet_pack_tag 'grid_system_layout.css'
 
 - content_for :javascript_links do
-  = javascript_pack_tag 'grid_system_layout.js'
+  = javascript_pack_tag 'grid_system_layout.js', data: {' turbolinks-track' => 'reload' }
 
 - content_for :application_content do
   .container-fluid

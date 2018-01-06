@@ -4,7 +4,6 @@ RSpec.describe MyController, type: :controller do
 
   context '#top' do
     subject { get :top }
-    it { is_expected.to render_template :my }
     context 'response' do
       subject { get :top; response }
       context 'with signed in user' do
