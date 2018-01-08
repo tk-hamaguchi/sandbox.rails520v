@@ -13,7 +13,7 @@ RSpec.describe 'GET /my', type: :request do
     it { is_expected.to render_template partial: 'layouts/_header' }
 
     it { is_expected.to render_template :grid_system }
-    it { is_expected.to_not render_template partial: 'layouts/_side_menu_items' }
+    it { is_expected.to render_template partial: 'layouts/_side_menu_items' }
     it { is_expected.to render_template partial: 'layouts/_footer' }
 
     it { is_expected.to render_template :my }
