@@ -3,6 +3,7 @@ ja:
   copyright_html: "Copyright &copy; %{year} @tk_hamaguchi"
   sign_in:  ログイン
   sign_out: ログアウト
+  edit_my_account: アカウント設定
 
   devise:
     failure:
@@ -64,6 +65,13 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
 
+  applicationcontroller:
+    my:
+      update:
+        flash:
+          updated: "アカウント情報を変更しました。"
+
+
   simple_form:
     required:
       text: 必須項目です
@@ -75,4 +83,10 @@ ja:
     side_menu_items:
       home: ホーム
 
+  page_name:
+    home: ホーム
+    edit_my_account: アカウント設定
 
+  my:
+    edit:
+      submit: アカウント設定を更新

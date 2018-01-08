@@ -26,25 +26,21 @@ body {
   font: {
     size: 0.6rem;
   }
-  color: gray
-}
+  color: gray;
 
-.copylight {
-  margin: 0px;
-}
+  .copylight {
+    margin: 0px;
+  }
 
-.version_no {
-  float: right;
-  margin: 0px;
+  .version_no {
+    float: right;
+    margin: 0px;
+  }
 }
 
 .alert {
   ul {
     margin-bottom: 0px;
   }
-}
-
-header {
-  border-bottom: #600 solid 1px;
 }
 

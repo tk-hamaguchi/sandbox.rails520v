@@ -1,0 +1,16 @@
+%nav{ aria: { label: 'breadcrumb' } }
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to root_path do
+        = t 'page_name.home'
+    %li.breadcrumb-item.active{ aria: { current: 'page' } }
+      = t 'edit_my_account'
+
+= simple_form_for current_user, url: my_path, method: :put do |f|
+  = f.input :name
+  = f.input :password
+  = f.input :password_confirmation
+  = f.button :button, class: 'btn-primary btn-lg btn-block', id: 'edit_my_submit' do
+    %i.fa.fa-edit{ aria:{ hidden: true }}
+    = t '.submit'
+%hr

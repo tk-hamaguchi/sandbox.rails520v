@@ -10,10 +10,12 @@ import $ from 'jquery'
 import App from '../app.vue'
 
 $(document).on('turbolinks:load DOMContentLoaded', () => {
-  $('#my_contents').html(document.createElement('hello'))
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount('hello')
+  if( $('#my_contents').length ) {
+    $('#my_contents').html(document.createElement('hello'))
+    const app = new Vue({
+      render: h => h(App)
+    }).$mount('hello')
+  }
 })
 
 
